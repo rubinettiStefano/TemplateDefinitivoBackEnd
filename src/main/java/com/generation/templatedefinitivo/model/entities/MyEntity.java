@@ -9,6 +9,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -32,7 +33,7 @@ public class MyEntity extends BaseEntity
     private MyEnum enumeratedValue;
                     //quando leggi entità riempi lista in automatico
     @ElementCollection(fetch = FetchType.EAGER) //Per ogni lista di """PRIMITIVI"""
-    private List<String> textList;
+    private List<String> textList = new ArrayList<>();
 
     //mappedBy -> nome della proprietà relazionale
     //dall'altro lato
