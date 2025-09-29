@@ -2,6 +2,7 @@ package com.generation.templatedefinitivo.services;
 
 import com.generation.templatedefinitivo.dtos.InputDtoMyEntity;
 import com.generation.templatedefinitivo.dtos.OutputDtoMyEntity;
+import com.generation.templatedefinitivo.exceptions.AlreadyPresentException;
 import com.generation.templatedefinitivo.model.entities.MyEntity;
 import com.generation.templatedefinitivo.model.repositories.MyEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,9 @@ public class MyEntityService
     public void saveWithDtoInput(InputDtoMyEntity dto)
     {
         MyEntity e = convertToEntity(dto);
+        //controllo se esiste già un entità con quel testo
+        if(repo.existsByMyText(e.getMyText()))
+            throw new AlreadyPresentException("MyEntity with text "+e.getMyText()+" already present");
         repo.save(e);
     }
 

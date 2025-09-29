@@ -1,9 +1,13 @@
 package com.generation.templatedefinitivo.controllers;
 
+import com.generation.templatedefinitivo.dtos.ErrorDto;
 import com.generation.templatedefinitivo.dtos.InputDtoMyEntity;
 import com.generation.templatedefinitivo.dtos.OutputDtoMyEntity;
+import com.generation.templatedefinitivo.exceptions.AlreadyPresentException;
 import com.generation.templatedefinitivo.services.MyEntityService;
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,10 +34,8 @@ public class MyEntityController
     //insert
     //update
     //delete
-
     @Autowired
     MyEntityService serv;
-
     //richiamabile tramite request http del client con url completo + verbo specificato
     //url_completo = base_url/controller_uri/metodo_uri
     //localhost:8080/api/myentities
@@ -56,8 +58,6 @@ public class MyEntityController
     {
         return serv.findAllAsDtos();
     }
-
-
     //come accedere: request http
     // url   - localhost:8080/api/myentities
     // verbo - POST
@@ -71,4 +71,6 @@ public class MyEntityController
     {
         serv.saveWithDtoInput(dto);
     }
+
+
 }

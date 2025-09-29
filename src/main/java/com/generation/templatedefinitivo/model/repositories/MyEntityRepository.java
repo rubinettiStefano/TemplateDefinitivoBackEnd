@@ -22,4 +22,6 @@ public interface MyEntityRepository extends JpaRepository<MyEntity, UUID>
 
     @Query("SELECT max(e.myNumber) FROM MyEntity e")
     Double numeroMassimo();
+
+    Boolean existsByMyText(String myText);
 }
