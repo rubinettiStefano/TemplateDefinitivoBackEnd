@@ -34,14 +34,14 @@ public class MyEntityService
         repo.save(e);
     }
 
-    private OutputDtoMyEntity convertToDto(MyEntity dto)
+    private OutputDtoMyEntity convertToDto(MyEntity e)
     {
         OutputDtoMyEntity res = new OutputDtoMyEntity();
-        res.setId(dto.getId());
-        res.setMyNumber(dto.getMyNumber());
-        res.setTextList(dto.getTextList());
-        res.setMyText(dto.getMyText());
-        res.setEnumeratedValue(dto.getEnumeratedValue());
+        res.setId(e.getId());
+        res.setMyNumber(e.getMyNumber());
+        res.setTextList(e.getTextList());
+        res.setMyText(e.getMyText());
+        res.setEnumeratedValue(e.getEnumeratedValue());
 
         return res;
     }
